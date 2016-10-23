@@ -21,3 +21,10 @@ forgot password.
 			 var record=new Record(<firstname>,<lastname>,<email>,<password>,true);
 			 record.register(signUpAction);
 		}
+		
+
+<h2>Licence</h2>
+
+<h4>MIT Licence</h4>
+
+Enjoy :)
