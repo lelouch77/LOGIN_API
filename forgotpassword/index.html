@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PHP API</title>
+    <script  src="../js/jquery-1.4.2.min.js"></script>
+    <script src="../js/jquery_cookie.js"></script>
+    <script src="../js/signin.js"></script>
+      <script src="../js/signout.js"></script>
+    <script src="../js/forgotpassword.js"></script>
+    <script>
+    function passwordReseted(response)
+    {
+      if(response.match(/TRUE/))
+      {
+        alert(response);
+        window.open('../','_self');
+      }
+      else {
+          alert(response);
+      }
+    }
+    function resetPassBt()
+    {
+      resetPass($('#password').val(),passwordReseted);
+    }
+    function codeVerified(response)
+    {
+      if(response.match(/TRUE/))
+      {
+        $('#inputCode').hide();
+        $('#inputPass').show();
+      }
+      else {
+          alert(response);
+      }
+    }
+    function verifyCodeBt()
+    {
+      verifyCode($('#code').val(),codeVerified);
+    }
+    function codeSend(response)
+    {
+      if(response.match(/TRUE/))
+      {
+         $('#inputEmail').hide();
+         $('#inputCode').show();
+      }
+      else {
+          alert(response);
+      }
+    }
+    function emailExist(response)
+    {
+      if(response.match(/TRUE/))
+      {
+         sendVerificationCode($('#email').val(),codeSend);
+
+      }
+      else {
+          alert(response);
+      }
+    }
+    function sendCode()
+    {
+      var email=$('#email').val();
+      isEmailExist(email,emailExist);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="inputEmail">
+    Enter your emailid:<input type="email" id="email"></br>
+    <input type="button" value="SendVerifictaionCode" onClick="sendCode();">
+  </div>
+      <div id="inputCode" style="display:none">
+      Verification Code was sent to your email, enter the code to continue..</br>
+      <input type="number" id="code">
+      <input type="button" value="Continue" onClick="verifyCodeBt();">
+      <input type="button" value="ResendCode" onClick="resendCodeBt();">
+    </div>
+  <div id="inputPass" style="display:none">
+     Enter the new password to continue..</br>
+    <input type="text" id="password">
+    <input type="button" value="Reset" onClick="resetPassBt();">
+  </div>
+  </body>
+</html>

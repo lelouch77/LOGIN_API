@@ -1,0 +1,87 @@
+<html>
+    <head>
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script src="js/jquery_cookie.js"></script>
+		<script src="js/signin.js"></script>
+	    <script src="js/signup.js"></script>
+      	<script src="js/session.js"></script>
+		<script>
+		phpSessionCheck();
+    function loginAction(response)
+    {
+       if(response.match(/FALSE/)|| response.match(/ERROR/))
+        {
+          alert("Login Fail");
+        }
+        else if (response.match(/NOTEXIST/))
+        {
+          alert("Email id not exist")
+        }
+        else
+        {
+            updateCookie(response,30);
+            window.open('home/','_self');
+        }
+    }
+		function phpSessionExist(response)
+		{
+			if(response.match(/TRUE/))
+			{
+				window.open('home/','_self');
+			}
+			else
+			{
+				sessionLogin();
+			}
+		}
+
+    function signUpAction(response)
+    {
+          alert(response);
+    }
+
+		function login()
+		{
+			 var user=new User($('#Lemail').val(),$('#LpassWord').val());
+			 var keepme='FALSE';
+				  if($('#keepMeLogin').is(":checked"))
+				  {
+					  keepme='TRUE';
+				  }
+			 user.logIn(keepme,loginAction);
+		}
+
+		function logup()
+		{
+			 var record=new Record($('#firstName').val(),$('#lastName').val(),$('#email').val(),$('#passWord').val(),true);
+			 record.register(signUpAction);
+		}
+
+
+				function stop()
+				{
+					return false;
+				}
+
+		</script>
+	</head>
+	<body color='#48a33c' style="display:none">
+	<h2>Login</h2>
+	<form onSubmit='return stop();' >
+	<input type='email' id='Lemail'placeholder='Email' required/></br>
+	<input type='password' id='LpassWord' placeholder='Password' required/></br>
+	<input type='checkbox' id='keepMeLogin' />Keep Me Login</br>
+	<input type='submit'  value='LogIn' id='loginButton' onClick='login();'></br>
+	</form>
+	<br><br>
+	<h2>Register</h2>
+	<form onSubmit='return stop();'>
+	<input type='email' id='email' placeholder='email' required/><br>
+	<input type='text' id='firstName' placeholder='FirstName' required/><br>
+	<input type='text' id='lastName' placeholder='LastName' required/><br>
+	<input type='password' id='passWord' placeholder='Password' required/><br>
+	<input type='submit'  value='Register' id='registerButton' onClick='logup();'><br>
+	</form>
+	</body>
+
+</html>
