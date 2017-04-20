@@ -16,11 +16,11 @@ forgot password.
 		}
     
 <h2>For Signing Up</h2>
-		function logup()
+		<pre>function logup()
 		{
 			 var record=new Record(<firstname>,<lastname>,<email>,<password>,true);
 			 record.register(signUpAction);
-		}
+		}</pre>
 		
 
 <h2>Licence</h2>
