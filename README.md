@@ -3,7 +3,7 @@ Simple user login and signup API using PHP and JS with keepme signin option and 
 forgot password.
 
 <h2>For Signing in</h2>
- ```javascript
+```javascript
 		function login()
 		{
 			 var user=new User(username,password);
@@ -14,15 +14,16 @@ forgot password.
 				  }
 			 user.logIn(keepme,loginAction);
 		}
-	```	
+```
 <h2>For Signing Up</h2>
+
 ```javascript
 		function logup()
 		{
 			 var record=new Record(firstname,lastname,email,password,true);
 			 record.register(signUpAction);
 		}
-	```	
+```	
 
 <h2>Licence</h2>
 
