@@ -1,5 +1,5 @@
 # LOGIN_API
-Simple user login and signup API using PHP and JS with keepme signin option and session table, automatic mail for verification and 
+Simple user login and signup framework using PHP and JS with keepme signin option and session table, automatic mail for verification and 
 forgot password.
 
 <h2>For Signing in</h2>
