@@ -4,6 +4,7 @@ forgot password.
 
 <h2>For Signing in</h2>
 
+```javascript
 		function login()
 		{
 			 var user=new User(username,password);
@@ -14,7 +15,7 @@ forgot password.
 				  }
 			 user.logIn(keepme,loginAction);
 		}
-	
+```	
 
 <h2>For Signing Up</h2>
 
